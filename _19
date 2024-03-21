@@ -1,0 +1,29 @@
+  public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode curr=head;
+        ListNode curr1=head;
+        ListNode tempNode=null;
+        ListNode tempNode2=null;
+        int i=0;
+        int sz=0;
+        int s=1;
+        while(curr1!=null){
+            sz++;
+            curr1=curr1.next;
+        }
+        i=sz-n;
+        while(curr!=null){
+            if(sz==1 || sz==0){
+                return null;
+            }
+            if (i==0) {
+                head=curr.next;
+                curr.next=null;
+            }
+             else if(sz>1 && i==s){
+                tempNode=curr.next;
+                tempNode2 = tempNode.next;
+                curr.next=tempNode2;
+            }
+            curr=curr.next;
+            s++;
+        }
